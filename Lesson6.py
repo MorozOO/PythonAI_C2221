@@ -34,12 +34,37 @@
 # except ValueError:
 #     print("Помилка: Введені данні не є числом")
 
-import warnings
-warnings.simplefilter("ignore",SyntaxWarning)
-warnings.simplefilter("always",ImportWarning)
+# import warnings
+# warnings.simplefilter("ignore",SyntaxWarning)
+# warnings.simplefilter("always",ImportWarning)
+#
+# warnings.warn("Warning, no code here", SyntaxWarning)
+# try:
+#     warnings.warn("Warning, module not import", ImportWarning)
+# except Exception:
+#     print("Warning")
 
-warnings.warn("Warning, no code here", SyntaxWarning)
+result = []
+
+
+def divider(a, b):
+    if a < b:
+        raise ValueError
+    if b > 100:
+        raise IndexError
+    return a / b
+
 try:
-    warnings.warn("Warning, module not import", ImportWarning)
-except Exception:
-    print("Warning")
+    data = {10: 2, 2: 5, "123": 4, 18: 0, 8: 4}
+except TypeError:
+    print("unhashable type: 'list'")
+for key in data:
+    try:
+        res = divider(key, data[key])
+        result.append(res)
+    except TypeError:
+        print("unhashable type: 'list'")
+    except ValueError:
+        print("ValueError")
+
+print(result)
