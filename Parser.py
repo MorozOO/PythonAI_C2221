@@ -19,4 +19,14 @@ with open('link.txt', 'r') as file:
         links_list.append(file.readline().replace("\n",''))
 
 print(links_list)
+# f = open('info.txt', 'w', encoding='utf-8')
+
+for link in links_list:
+    req = requests.get(link)
+    soup1 = BeautifulSoup(req.text,features="html.parser" )
+    soup_list_name_film = soup1.find_all('span', {"class":"oname_ua"})
+    print(soup_list_name_film[0].text)
+
+
+
 
