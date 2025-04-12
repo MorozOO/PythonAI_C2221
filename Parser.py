@@ -17,7 +17,7 @@ links_list = []
 with open('link.txt', 'r') as file:
     links_list = file.readlines()
 
-print(links_list)
+# print(links_list)
 f = open('info.txt', 'w', encoding='utf-8')
 
 for link in links_list:
@@ -26,6 +26,9 @@ for link in links_list:
     soup_list_name_film = soup1.find_all('span', {"class":"oname_ua"})
     if len(soup_list_name_film)> 0:
         f.write(f'{soup_list_name_film[0].text}\n')
+    soup_list_ul = soup1.find_all('ul',{"class":"short-list fx-1"})
+    for item in soup_list_ul:
+        f.write(f"{item.text}\n")
 
 f.close()
 
